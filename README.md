@@ -19,8 +19,8 @@ Dashboard and Visualizations are included
 ****************************************************************************************************************************************  
 Credit and Contributions
  I have found several older OpenSource GitHub projects on Palo Alto to Elk setups and whish to thank the following early developers.  
- shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
- sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
+ - shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
+ - sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
 **************************************************************************************************************************************** 
 
 ## Tutorial
