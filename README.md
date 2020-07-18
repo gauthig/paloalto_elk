@@ -1,8 +1,12 @@
 Palo Alto Networks PAN-OS v9.1+ Elastic Stack v7.x Configuration
 
 There are several Palo Alto projects for ELK but most seem to be vacated with no updates in the past year.  Also could not find any with PAN-OS 9.1+ expanded logs (SD-Wan).
-####NOT READY FOR PRODUCTION-ETA July 21 2020####
+<ur>
+<br>
 
+## NOT READY FOR PRODUCTION-ETA July 21 2020
+<br>
+<ur>
 ## Background
 Update existing projects to CIM and PAN 9.1
 Initial Updates to early projects:
