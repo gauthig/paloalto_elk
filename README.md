@@ -19,8 +19,8 @@ Dashboard and Visualizations are included
 ****************************************************************************************************************************************  
 Credit and Contributions
  I have found several older OpenSource GitHub projects on Palo Alto to Elk setups and whish to thank the following early developers.  
- - shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
- - sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
+ shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
+ sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
 **************************************************************************************************************************************** 
 
 ## Tutorial
@@ -41,7 +41,22 @@ Once you have ELK up and running start here
 
 - Edit 'pan-os.conf'
   - **Set your timezone correctly** *(Very important)*
-  - Copy the file into your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
+ - **RAW Log**
+	The RAW output from the Palo Alto is saved in each document in the message field.  This is required
+	if you are on a PCI or other regulated firewall.  If not and you want to save space, uncomment this section
+to not store the non-parsed raw syslog (Optional):
+  #      mutate {
+  #          # Original message has been fully parsed, so remove it.
+  #          remove_field => [ "message" ]
+  #      }
+    
+- **dnsmasq**
+	If you installed dnsmasq on you logstash server, then uncomment the two lines that look like this 
+      	to send dns lookups to the local dnsmasq service
+#                nameserver => [ "127.0.0.1" ] 
+
+  - **Copy files to your server**
+Copy pan-os.conf to your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
 - Upload the two pre-built index templates with additional GeoIP fields
 ```
 curl -XPUT http://<your-elasticsearch-server>:9200/_template/panos-traffic?pretty -H 'Content-Type: application/json' -d @traffic_template_mapping.json
