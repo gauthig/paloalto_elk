@@ -45,15 +45,15 @@ Once you have ELK up and running start here
 	The RAW output from the Palo Alto is saved in each document in the message field.  This is required
 	if you are on a PCI or other regulated firewall.  If not and you want to save space, uncomment this section
 to not store the non-parsed raw syslog (Optional): <br>
-    \#      mutate {   <br>
-    \#          # Original message has been fully parsed, so remove it. <br>
-    \#          remove_field => [ "message" ] <br>
-    \#      }<br>
+        \#      mutate {   <br>
+        \#          # Original message has been fully parsed, so remove it. <br>
+        \#          remove_field => [ "message" ] <br>
+        \#      }<br>
     
 - **dnsmasq**
 	If you installed dnsmasq on you logstash server, then uncomment the two lines that look like this 
       	to send dns lookups to the local dnsmasq service<br>
-    \#                nameserver => [ "127.0.0.1" ] 
+        \#                nameserver => [ "127.0.0.1" ] 
 
   - **Copy files to your server**
 Copy pan-os.conf to your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
