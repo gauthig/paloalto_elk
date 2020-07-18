@@ -1,5 +1,6 @@
 {
-  "template" : "traffic*",
+  "template" : "panos-index-template",
+  "index_patterns": ["pan-os-index*"],	
   "version" : 1,
   "settings" : {
     "index.refresh_interval" : "5s"
@@ -13,7 +14,7 @@
           "@version" : {
             "type" : "byte"
           },
-          "Action" : {
+          "action" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -22,7 +23,7 @@
               }
             }
           },
-          "ActionFlags" : {
+          "action_flags" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -31,7 +32,7 @@
               }
             }
           },
-          "ActionSource" : {
+          "action_source" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -40,7 +41,7 @@
               }
             }
           },
-          "Application" : {
+          "app" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -49,17 +50,17 @@
               }
             }
           },
-          "Bytes" : {
+          "bytes" : {
             "type" : "long"
           },
-          "BytesReceived" : {
+          "bytesReceived" : {
             "type" : "long"
           },
-          "BytesSent" : {
+          "bytesSent" : {
             "type" : "long"
           },
-          "DestinationIP" : { "type" : "ip" },
-          "DestinationIPGeo" : {
+          "dest_ip" : { "type" : "ip" },
+          "dest_ipGeo" : {
             "properties" : {
               "city_name" : {
                 "type" : "text",
@@ -154,7 +155,7 @@
               }
             }
           },
-          "DestinationLocation" : {
+          "dest_location" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -163,8 +164,8 @@
               }
             }
           },
-          "DestinationPort" : { "type" : "integer" },
-          "DestinationUser" : {
+          "dest_port" : { "type" : "integer" },
+          "dest_user" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -173,7 +174,7 @@
               }
             }
           },
-          "DestinationVMUUID" : {
+          "dest_vm_uuid" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -182,7 +183,7 @@
               }
             }
           },
-          "DestinationZone" : {
+          "dest_zone" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -191,19 +192,19 @@
               }
             }
           },
-		  "DeviceGroupHierarchyLevel1" : {
+		  "dg_hier_level_1" : {
             "type" : "short"
           },
-          "DeviceGroupHierarchyLevel2" : {
+          "dg_hier_level_2" : {
             "type" : "short"
           },
-          "DeviceGroupHierarchyLevel3" : {
+          "dg_hier_level_3" : {
             "type" : "short"
           },
-          "DeviceGroupHierarchyLevel4" : {
+          "dg_hier_level_4" : {
             "type" : "short"
           },
-          "DeviceName" : {
+          "dvc_name" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -212,7 +213,7 @@
               }
             }
           },
-          "ElapsedTime" : {
+          "elapsed_sec" : {
             "type" : "long"
           },
           "FUTURE_USE" : {
@@ -224,7 +225,7 @@
               }
             }
           },
-          "Flags" : {
+          "tcp_flag" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -233,11 +234,11 @@
               }
             }
           },
-          "GeneratedTime" : {
+          "generated_time" : {
             "type" : "date",
             "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
           },
-          "InboundInterface" : {
+          "src_interface" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -255,7 +256,7 @@
               }
             }
           },
-          "MonitorTag_IMEI" : {
+          "imei" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -264,15 +265,15 @@
               }
             }
           },
-          "NATDestinationIP" : { "type" : "ip" },
-          "NATDestinationPort" : {
+          "NATdest_ip" : { "type" : "ip" },
+          "NATdest_port" : {
             "type" : "integer"
           },
-          "NATSourceIP" : { "type" : "ip" },
-          "NATSourcePort" : {
+          "NATsrc_ip" : { "type" : "ip" },
+          "NATsrc_port" : {
             "type" : "integer"
           },
-          "OutboundInterface" : {
+          "dest_interface" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -281,23 +282,23 @@
               }
             }
           },
-          "Packets" : {
+          "packets" : {
             "type" : "long"
           },
-          "PacketsReceived" : {
+          "packetsReceived" : {
             "type" : "long"
           },
-          "PacketsSent" : {
+          "packetsSent" : {
             "type" : "long"
           },
-          "ParentSessionID" : {
+          "parent_session_id" : {
             "type" : "integer"
           },
-          "ParentStartTime" : {
+          "parent_start_time" : {
             "type" : "date",
             "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
           },
-          "Protocol" : {
+          "protocol" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -306,14 +307,14 @@
               }
             }
           },
-          "ReceiveTime" : {
+          "receive_time" : {
             "type" : "date",
             "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
           },
-          "RepeatCount" : {
+          "repeat_count" : {
             "type" : "long"
           },
-          "RuleName" : {
+          "rule" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -322,10 +323,10 @@
               }
             }
           },
-          "SequenceNumber" : {
+          "seqno" : {
             "type" : "long"
           },
-          "SerialNumber" : {
+          "serial_number" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -334,7 +335,7 @@
               }
             }
           },
-          "SessionEndReason" : {
+          "session_end_reason" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -343,11 +344,11 @@
               }
             }
           },
-          "SessionID" : {
+          "session_id" : {
             "type" : "long"
           },
-          "SourceIP" : { "type" : "ip" },
-          "SourceIPGeo" : {
+          "src_ip" : { "type" : "ip" },
+          "src_ipGeo" : {
             "properties" : {
               "city_name" : {
                 "type" : "text",
@@ -443,7 +444,7 @@
               }
             }
           },
-          "SourceLocation" : {
+          "src_location" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -452,10 +453,10 @@
               }
             }
           },
-          "SourcePort" : {
+          "src_port" : {
             "type" : "integer"
           },
-          "SourceUser" : {
+          "user" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -464,7 +465,7 @@
               }
             }
           },
-          "SourceVMUUID" : {
+          "srv_vm_uuid" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -473,7 +474,7 @@
               }
             }
           },
-          "SourceZone" : {
+          "src_zone" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -482,11 +483,11 @@
               }
             }
           },
-          "StartTime" : {
+          "start" : {
             "type" : "date",
             "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
           },
-          "Threat_ContentType" : {
+          "content_type" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -499,10 +500,10 @@
             "type" : "date",
             "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
           },
-          "TunnelID_IMSI" : {
+          "tunnelid" : {
             "type" : "long"
           },
-          "TunnelType" : {
+          "tunnel" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -511,7 +512,7 @@
               }
             }
           },
-          "Type" : {
+          "type" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -529,7 +530,7 @@
               }
             }
           },
-          "VirtualSystem" : {
+          "virtual_system" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -538,7 +539,7 @@
               }
             }
           },
-          "VirtualSystemName" : {
+          "virtual_systemName" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
