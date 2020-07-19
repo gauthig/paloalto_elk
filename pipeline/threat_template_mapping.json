@@ -1,11 +1,11 @@
 {
-  "template" : "threat*",
+  "template" : "threat",
   "version" : 1,
   "settings" : {
     "index.refresh_interval" : "5s"
   },
   "mappings" : {
-    "_default_" : {
+    "_doc_" : {
         "properties" : {
           "@timestamp" : {
             "type" : "date"
