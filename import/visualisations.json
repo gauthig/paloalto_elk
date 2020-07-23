@@ -350,20 +350,6 @@
     }
   },
   {
-    "_id": "0636dc50-fdeb-11e7-be83-eddfa25a06ba",
-    "_type": "visualization",
-    "_source": {
-      "title": "Traffic - Top 10 by Name (Pie)",
-      "visState": "{\"title\":\"Traffic - Top 10 by Name (Pie)\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":false,\"labels\":{\"show\":false,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"bytes\",\"customLabel\":\"Traffic\"}}}}]}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"08aca200-fe11-11e7-87f3-ebdc1353ce87\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
-      }
-    }
-  },
-  {
     "_id": "bc35e500-fdeb-11e7-be83-eddfa25a06ba",
     "_type": "visualization",
     "_source": {
@@ -672,39 +658,11 @@
     }
   },
   {
-    "_id": "f679d8f0-fde8-11e7-be83-eddfa25a06ba",
-    "_type": "visualization",
-    "_source": {
-      "title": "URL - Blocked URLs by Name (Stacked Bar)",
-      "visState": "{\"title\":\"URL - Blocked URLs by Name (Stacked Bar)\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"categoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Hits\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Hits\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Hits\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}}}]}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"1446c190-fe11-11e7-87f3-ebdc1353ce87\",\"filter\":[],\"query\":{\"query\":\"content_type:'url' NOT action:'alert'\",\"language\":\"lucene\"}}"
-      }
-    }
-  },
-  {
     "_id": "37ee9780-fde9-11e7-be83-eddfa25a06ba",
     "_type": "visualization",
     "_source": {
       "title": "URL - Top 10 by Destination (Stacked Bar)",
       "visState": "{\"title\":\"URL - Top 10 by Destination (Stacked Bar)\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"categoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Hits\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Hits\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Hits\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"dest_location.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Location\"}}]}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"1446c190-fe11-11e7-87f3-ebdc1353ce87\",\"filter\":[],\"query\":{\"query\":\"content_type:'url'\",\"language\":\"lucene\"}}"
-      }
-    }
-  },
-  {
-    "_id": "ecb58ad0-fde8-11e7-be83-eddfa25a06ba",
-    "_type": "visualization",
-    "_source": {
-      "title": "URL - All by Name (Stacked Bar)",
-      "visState": "{\"title\":\"URL - All by Name (Stacked Bar)\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"categoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Hits\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Hits\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Hits\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}}}]}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
@@ -864,20 +822,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"1446c190-fe11-11e7-87f3-ebdc1353ce87\",\"filter\":[],\"query\":{\"query\":\"NOT threat_id:9999 NOT content_type:'url'\",\"language\":\"lucene\"}}"
-      }
-    }
-  },
-  {
-    "_id": "b403c1e0-fde6-11e7-be83-eddfa25a06ba",
-    "_type": "visualization",
-    "_source": {
-      "title": "URL - Top 100 Blocked URLs (Table)",
-      "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Timestamp\",\"field\":\"@timestamp\"},\"schema\":\"metric\",\"type\":\"max\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"URL\",\"field\":\"threat_uri_name.keyword\",\"order\":\"desc\",\"orderBy\":\"1\",\"size\":100},\"schema\":\"bucket\",\"type\":\"terms\"},{\"enabled\":true,\"id\":\"3\",\"params\":{\"customLabel\":\"action\",\"field\":\"action.keyword\",\"order\":\"desc\",\"orderBy\":\"1\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"},{\"enabled\":true,\"id\":\"5\",\"params\":{\"customLabel\":\"Src IP\",\"field\":\"src_name.keyword\",\"order\":\"desc\",\"orderBy\":\"1\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"},\"totalFunc\":\"sum\"},\"title\":\"URL - Top 100 Blocked URLs (Table)\",\"type\":\"table\"}",
-      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"1446c190-fe11-11e7-87f3-ebdc1353ce87\",\"filter\":[],\"query\":{\"language\":\"lucene\",\"query\":\"content_type:'url' NOT action:'alert'\"}}"
       }
     }
   },
