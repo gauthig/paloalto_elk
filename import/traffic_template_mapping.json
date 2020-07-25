@@ -4,11 +4,9 @@
   "settings" : {
     "index.refresh_interval" : "5s"
   },
-
-
 {
   "mappings": {
-    "_doc": {
+    "_default": {
       "properties": {
         "@timestamp": {
           "type": "date"
