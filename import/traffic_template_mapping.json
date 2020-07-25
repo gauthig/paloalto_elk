@@ -4,7 +4,6 @@
   "settings" : {
     "index.refresh_interval" : "5s"
   },
-{
   "mappings": {
     "_default": {
       "properties": {
