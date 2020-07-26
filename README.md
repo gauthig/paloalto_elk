@@ -4,13 +4,14 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 <ur>
 <br>
 
-## NOT READY FOR PRODUCTION-ETA July 21 2020
+## NOT READY FOR PRODUCTION-ETA Aug 5 2020
+## Updating with extra log fileds from PAN-OS 10 
 <br>
 <ur>
 ## Background
-Update existing projects to CIM and PAN 9.1
+Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
 Initial Updates to early projects:
--Added 10 new fields for traffic logs that started with PAN-OS 9.1
+-Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
      Rule UUID, HTTP/2 Connection, Link Change Count, Policy ID, Link Switches, SD-WAN Cluster, SD-WAN Device Type, SD-WAN Cluster Type, SD-WAN Site, Dynamic User Group Name
      Most will be blank or zero except for Rule UUID unless you use advanced features of the PA
 -Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
