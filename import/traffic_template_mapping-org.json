@@ -1,11 +1,6 @@
 {
-  "template" : "panos-traffic*",
-  "version" : 1,
-  "settings" : {
-    "index.refresh_interval" : "5s"
-  },
+  "template" : "panos-traffic",
   "mappings": {
-    "_default": {
       "properties": {
         "@timestamp": {
           "type": "date"
@@ -19,7 +14,6 @@
             }
 		  }
         }
-     }
     }
   }
   
