@@ -1,5 +1,5 @@
 {
-  "template" : "panos-traffic",
+  "template" : "panos-traffic*",
   "version" : 1,
   "settings" : {
     "index.refresh_interval" : "5s"
