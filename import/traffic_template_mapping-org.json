@@ -1,0 +1,34 @@
+{
+  "template" : "panos-traffic*",
+  "version" : 1,
+  "settings" : {
+    "index.refresh_interval" : "5s"
+  },
+  "mappings": {
+    "_default": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "FUTURE_USE-1": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
