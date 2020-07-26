@@ -17,8 +17,10 @@
               "type": "keyword",
               "ignore_above": 256
             }
-          }
+		  }
+        }
      }
     }
   }
+  
 }
