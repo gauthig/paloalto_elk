@@ -62,10 +62,11 @@ to not store the non-parsed raw syslog (Optional): <br>
 
   - **Copy files to your server**
 Copy pan-os.conf to your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
-- Upload the two pre-built index templates with additional GeoIP fields
+- Upload the index template with additional GeoIP fields, message field non-indexed and some other optimizations
+- If running curtl from anotehr node please put the correct server IP and 
+- ensure port 9200 is open on the network (not a secure practice)
 ```
-curl -XPUT http://<your-elasticsearch-server>:9200/_template/panos-traffic?pretty -H 'Content-Type: application/json' -d @traffic_template_mapping.json
-curl -XPUT http://<your-elasticsearch-server>:9200/_template/panos-threat?pretty -H 'Content-Type: application/json' -d @threat_template_mapping.json
+curl -XPUT http://127.0.0.1:9200/_template/panos-template?pretty -H 'Content-Type: application/json' -d @panos-template.json
 ```    
 - Restart Elastic Search & LogStash
 sudo systemctl restart elasticsearch.service
