@@ -457,7 +457,13 @@
           }
         },
         "severity" : {
-          "type" : "long"
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 40,
+              "type" : "keyword"
+            }
+          }
         },
         "seqno" : {
           "type" : "long"
@@ -494,13 +500,14 @@
           }
         },
         "message" : {
-          "type" : "text",
-          "fields" : {
-            "keyword" : {
-              "ignore_above" : 1024,
-              "type" : "keyword"
-            }
-          }
+          "eager_global_ordinals": false,
+          "index_phrases": false,
+          "fielddata": false,
+          "norms": false,
+          "index": false,
+          "store": false,
+          "type": "text",
+          "fields": {}
         },
         "generated_time" : {
           "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis",
