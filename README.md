@@ -6,7 +6,9 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 
 <br>
 <ur>
+
  ## Background
+
 Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
 Initial Updates from other projects:
 
@@ -25,7 +27,8 @@ Initial Updates from other projects:
 
 <br>
 <ur>
-## Tutorial
+
+ # Tutorial
 
 This project was built on Ubuntu 20.04, and adding the ELK repositories so that the ELK stack stays current.  Instructions are provided for this OS base, ELK setup.
 
