@@ -4,8 +4,6 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 <ur>
 <br>
 
-## NOT READY FOR PRODUCTION-ETA Aug 5 2020
-## Updating with extra log fileds from PAN-OS 10 
 <br>
 <ur>
 ## Background
@@ -36,11 +34,11 @@ Credit and Contributions
 
 This project was built on Ubuntu 20.04, and adding the ELK repositories so that the ELK stack stays current.  Instructions are provided for this OS base, ELK setup.
 
-## 1 - ELK install using repositories 
+# 1 - ELK install using repositories 
 
-## 2 - Install dnsmasq
+# 2 - Install dnsmasq
 
-## 3 - After ELK Install (or if ELK already exists
+#3 - After ELK Install (or if ELK already exists)
 
 Once you have ELK up and running start here
 
@@ -48,7 +46,7 @@ Once you have ELK up and running start here
   - elk-pipeline  - files that need to be on the elk server
   - gui-import - files that will be imported via the kibana web gui
 
-# 3.1 Edit 'pan-os.conf'
+## 3.1 Edit 'pan-os.conf'
  - **Set your timezone correctly** *(Very important)*, also set you local server timezone so it is not UTC
  - **RAW Log**
 	The RAW output from the Palo Alto is saved in each document in the message field.  This is required
@@ -61,17 +59,17 @@ to not store the non-parsed raw syslog (Optional): <br>
         \#      }<br>
     
 
-# 3.2  **Copy files to your server**
+## 3.2  **Copy files to your server**
 Copy pan-os.conf to your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
 
-# 3.3 Install the index template (adds GeoIP for maps and optimizes other fields)
+## 3.3 Install the index template (adds GeoIP for maps and optimizes other fields)
 
 - Run this command from the same directory where you put panos-template.json
 - If running curl from another node please put the correct server IP and ensure port 9200 is open on the network (not a secure practice)
 ```
 curl -XPUT http://127.0.0.1:9200/_template/panos-template?pretty -H 'Content-Type: application/json' -d @panos-template.json
 ```    
-# 3.4 Import the saved object files (in this order)
+## 3.4 Import the saved object files (in this order)
 log into your kibana interface and go to the saved objects page
 ```
 http://<yourkibana DNS or IP>:5601/app/kibana#/management/kibana/objects
@@ -82,11 +80,11 @@ Click on import and select each import file  in this order
 3-dashboard.ndjson
 4-maps.ndjson
 
-# 3.5  Restart Elastic Search & LogStash
+## 3.5  Restart Elastic Search & LogStash
 sudo systemctl restart elasticsearch.service
 sudo systemctl restart logstash.service
   
-## 4 - PaloAlto Setup
+# 4 - PaloAlto Setup
 - Configure your PANW Firewall(s) or Panorama to send syslog messages to your Elastic Stack server
 - Use port 5514
 - Ensure that your firewall generates at least one traffic, threat, system & config syslog entry each
