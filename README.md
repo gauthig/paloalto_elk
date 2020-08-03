@@ -1,6 +1,6 @@
-Palo Alto Networks PAN-OS v9.1+ Elastic Stack v7.x Configuration
+Palo Alto Networks PAN-OS v8.1-10.0 Elastic Stack v7.x Configuration
 
-There are several Palo Alto projects for ELK but most seem to be vacated with no updates in the past year.  Also could not find any with PAN-OS 9.1+ expanded logs (SD-Wan).
+There are several Palo Alto projects for ELK but most seem to be vacated with no updates in the past year.  Also could not find any with PAN-OS 9 or 10+ expanded logs (SD-Wan).
 <ur>
 <br>
 
@@ -10,15 +10,19 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 <ur>
 ## Background
 Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
-Initial Updates to early projects:
+Initial Updates from other projects:
+-Support of ELK v7.8
 -Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
-     Rule UUID, HTTP/2 Connection, Link Change Count, Policy ID, Link Switches, SD-WAN Cluster, SD-WAN Device Type, SD-WAN Cluster Type, SD-WAN Site, Dynamic User Group Name
-     Most will be blank or zero except for Rule UUID unless you use advanced features of the PA
 -Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
      Allow you to import CIM Traffic and Threat visualizations
--Added DNS filter to provide hostnames not just the IP
+-Added DNS filter to provide hostnames not just the IP including DNSMASQ install reference
+-Converted all import objects to ndjson (ELK is migrating away from json)
+-Import of indexes so visualizations match index UUID
+-Added prune to pipeline to get ride of normaly null and duplicated fields.  
+ Also helps when PA adds a new log field, no more COL# fields
+-Created panos-undefined index to capture logging of other types 
+-Added destination map to traffic dashboard
 
-Dashboard and Visualizations are included  
 
 
 ****************************************************************************************************************************************  
@@ -30,73 +34,65 @@ Credit and Contributions
 
 ## Tutorial
 
-This project was built on Ubuntu 20.04, and adding the ELK repositories so that the ELK stack stays current.  Instructions are provided for this OS base + ELK setup.
+This project was built on Ubuntu 20.04, and adding the ELK repositories so that the ELK stack stays current.  Instructions are provided for this OS base, ELK setup.
 
-## Existing ELK Install
+## 1 - ELK install using repositories 
+
+## 2 - Install dnsmasq
+
+## 3 - After ELK Install (or if ELK already exists
 
 Once you have ELK up and running start here
 
-- Download the files from this repo
-  - pan-os.conf
-  - traffic_template_mapping.json
-  - threat_template_mapping.json
-  - searches-base.json
-  - visualisations-base.json
-  - dashboards-base.json
+- Download these folders as follows
+  - elk-pipeline  - files that need to be on the elk server
+  - gui-import - files that will be imported via the kibana web gui
 
-- Edit 'pan-os.conf'
-  - **Set your timezone correctly** *(Very important)*
+# 3.1 Edit 'pan-os.conf'
+ - **Set your timezone correctly** *(Very important)*, also set you local server timezone so it is not UTC
  - **RAW Log**
 	The RAW output from the Palo Alto is saved in each document in the message field.  This is required
-	if you are on a PCI or other regulated firewall.  If not and you want to save space, uncomment this section
+	if you are on a PCI or other regulated firewall. This field is not parsed or indexed.
+        If you want to save space and don't need raw message uncomment this section
 to not store the non-parsed raw syslog (Optional): <br>
         \#      mutate {   <br>
         \#          # Original message has been fully parsed, so remove it. <br>
         \#          remove_field => [ "message" ] <br>
         \#      }<br>
     
-- **dnsmasq**
-	If you installed dnsmasq on you logstash server, then uncomment the two lines that look like this 
-      	to send dns lookups to the local dnsmasq service<br>
-        \#                nameserver => [ "127.0.0.1" ] 
 
-  - **Copy files to your server**
+# 3.2  **Copy files to your server**
 Copy pan-os.conf to your **conf** directory. For Ubuntu/Debian this is "/etc/logstash/conf.d/
-- Upload the index template with additional GeoIP fields, message field non-indexed and some other optimizations
-- If running curtl from anotehr node please put the correct server IP and 
-- ensure port 9200 is open on the network (not a secure practice)
+
+# 3.3 Install the index template (adds GeoIP for maps and optimizes other fields)
+
+- Run this command from the same directory where you put panos-template.json
+- If running curl from another node please put the correct server IP and ensure port 9200 is open on the network (not a secure practice)
 ```
 curl -XPUT http://127.0.0.1:9200/_template/panos-template?pretty -H 'Content-Type: application/json' -d @panos-template.json
 ```    
-- Restart Elastic Search & LogStash
+# 3.4 Import the saved object files (in this order)
+log into your kibana interface and go to the saved objects page
+```
+http://<yourkibana DNS or IP>:5601/app/kibana#/management/kibana/objects
+```
+Click on import and select each import file  in this order 
+1-index.ndjson
+2-visualizations.ndjson
+3-dashboard.ndjson
+4-maps.ndjson
+
+# 3.5  Restart Elastic Search & LogStash
 sudo systemctl restart elasticsearch.service
 sudo systemctl restart logstash.service
-
-
-- Configure your PANW Firewall(s) to send syslog messages to your Elastic Stack server
-***MORE DETAILS COMMIN SOON***
   
+## 4 - PaloAlto Setup
+- Configure your PANW Firewall(s) or Panorama to send syslog messages to your Elastic Stack server
+- Use port 5514
 - Ensure that your firewall generates at least one traffic, threat, system & config syslog entry each
  - Traffic will be generated by just going to a web site (make sure you setup logging for your policies). 
  - You may have to trigger a threat log entry. Follow [this guide](https://live.paloaltonetworks.com/t5/Management-Articles/How-to-Test-Threat-Prevention-Using-a-Web-Browser/ta-p/62073) from Palo Alto for instructions
-  - After committing to set your syslog server, you will need to do another commit (any change) to actually send a config log message.  Try changing the order of a rule and committing it.
-  
-- Once the data is rolling, login to Kibana and create the 4 new index patterns, all with a Time Filter field of '@timestamp'
-	Stack Management -> Index Patterns
-		+Create Index
-		Type the name of each log type then hit next
-		Select Timestamp and save
-These are the 4 indexes you need to create
-  - panos-traffic
-  - panos-threat
-  - panos-system
-  - panos-config
+ - After committing to set your syslog server, you will need to do another commit (any change) to actually send a config log message.  Try changing the order of a rule and committing it.
 
-- And lastly, import the saved object files (in this orders)
-  - searches-base.json
-  - visualisations-base.json
-  - dashboards-base.json
-  
-  
  
 ## References
