@@ -1,4 +1,4 @@
-Palo Alto Networks PAN-OS v8.1-10.0 Elastic Stack v7.x Configuration
+Palo Alto Networks PAN-OS v8.1-10.0 Elastic Stack v7.x Configuration 
 
 There are several Palo Alto projects for ELK but most seem to be vacated with no updates in the past year.  Also could not find any with PAN-OS 9 or 10+ expanded logs (SD-Wan).
 <ur>
@@ -9,17 +9,18 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 ## Background
 Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
 Initial Updates from other projects:
-- Support of ELK v7.8
-- Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
-- Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
+
+ - Support of ELK v7.8
+ - Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
+ - Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
      Allow you to import CIM Traffic and Threat visualizations
-- Added DNS filter to provide hostnames not just the IP including DNSMASQ install reference
-- Converted all import objects to ndjson (ELK is migrating away from json)
-- Import of indexes so visualizations match index UUID
-- Added prune to pipeline to get ride of normaly null and duplicated fields.  
+ - Added DNS filter to provide hostnames not just the IP including DNSMASQ install reference
+ - Converted all import objects to ndjson (ELK is migrating away from json)
+ - Import of indexes so visualizations match index UUID
+ - Added prune to pipeline to get ride of normaly null and duplicated fields.  
  Also helps when PA adds a new log field, no more COL# fields
-- Created panos-undefined index to capture logging of other types 
-- Added destination map to traffic dashboard
+ - Created panos-undefined index to capture logging of other types 
+ - Added destination map to traffic dashboard
 
 
 <br>
