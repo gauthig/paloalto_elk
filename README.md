@@ -6,7 +6,7 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 
 <br>
 <ur>
-## Background
+ ## Background
 Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
 Initial Updates from other projects:
 
