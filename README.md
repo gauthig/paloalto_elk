@@ -24,7 +24,8 @@ Initial Updates from other projects:
  - Created panos-undefined index to capture logging of other types 
  - Added destination map to traffic dashboard
 
-
+If you like the visualizations and dasboards, please buy me a coffee so I can keep going
+	https://www.patreon.com/gauthig
 <br>
 <ur>
 
