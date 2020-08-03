@@ -9,27 +9,21 @@ There are several Palo Alto projects for ELK but most seem to be vacated with no
 ## Background
 Update existing projects to CIM and PAN 10.0  (Will work with PAN-OS 8+)
 Initial Updates from other projects:
--Support of ELK v7.8
--Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
--Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
+- Support of ELK v7.8
+- Added new fields for traffic logs that started with PAN-OS 9.1 and 10.0
+- Changed attribute names from the default PA field names to Common Information Model (CIM) where applicable.  
      Allow you to import CIM Traffic and Threat visualizations
--Added DNS filter to provide hostnames not just the IP including DNSMASQ install reference
--Converted all import objects to ndjson (ELK is migrating away from json)
--Import of indexes so visualizations match index UUID
--Added prune to pipeline to get ride of normaly null and duplicated fields.  
+- Added DNS filter to provide hostnames not just the IP including DNSMASQ install reference
+- Converted all import objects to ndjson (ELK is migrating away from json)
+- Import of indexes so visualizations match index UUID
+- Added prune to pipeline to get ride of normaly null and duplicated fields.  
  Also helps when PA adds a new log field, no more COL# fields
--Created panos-undefined index to capture logging of other types 
--Added destination map to traffic dashboard
+- Created panos-undefined index to capture logging of other types 
+- Added destination map to traffic dashboard
 
 
-
-****************************************************************************************************************************************  
-Credit and Contributions
- I have found several older OpenSource GitHub projects on Palo Alto to Elk setups and whish to thank the following early developers.  
- shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
- sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
-**************************************************************************************************************************************** 
-
+<br>
+<ur>
 ## Tutorial
 
 This project was built on Ubuntu 20.04, and adding the ELK repositories so that the ELK stack stays current.  Instructions are provided for this OS base, ELK setup.
@@ -38,7 +32,7 @@ This project was built on Ubuntu 20.04, and adding the ELK repositories so that 
 
 # 2 - Install dnsmasq
 
-#3 - After ELK Install (or if ELK already exists)
+# 3 - After ELK Install (or if ELK already exists)
 
 Once you have ELK up and running start here
 
@@ -94,3 +88,9 @@ sudo systemctl restart logstash.service
 
  
 ## References
+****************************************************************************************************************************************  
+Credit and Contributions
+ I have found several older OpenSource GitHub projects on Palo Alto to Elk setups and whish to thank the following early developers.  
+ shadow-box - (https://github.com/shadow-box/Palo-Alto-Networks-ELK-Stack)
+ sm-biz - (https://github.com/sm-biz/paloalto-elasticstack-viz)
+**************************************************************************************************************************************** 
