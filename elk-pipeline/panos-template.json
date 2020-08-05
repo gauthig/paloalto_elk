@@ -421,7 +421,13 @@
           }
         },
         "mac_address" : {
-          "type" : "text"
+           "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            }
+          }
         },
         "dest_name" : {
           "type" : "text",
@@ -451,13 +457,8 @@
           }
         },
         "timestamp" : {
-          "type" : "text",
-          "fields" : {
-            "keyword" : {
-              "ignore_above" : 256,
-              "type" : "keyword"
-            }
-          }
+           "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis",
+          "type" : "date"
         },
         "severity" : {
           "type" : "text",
