@@ -22,12 +22,21 @@
 # 8/4/2020 gauthig - Add index template import
 # 7/23/2020 gauthig - initial saved object load
 
+echo "Stopping logstash service"
 systemctl stop logstash
+echo "logstash stopped"
+echo "/n"
+echo "Copy pan-os.conf to /etc/logstash/conf.d"
 cp elk-pipeline/pan-os.conf /etc/logstash/conf.d/pan-os.conf
+echo "/n"
+echo "Importing index template"
 curl -XPUT http://localhost:9200/_template/panos-template?pretty -H 'Content-Type: application/json' -d @elk-pipeline/panos-template.json
-curl -X POST "localhost:5601/api/saved_objects/_import -H "kbn-xsrf: true" --form file=@import/panos-objects.ndjson" -H 'kbn-xsrf: true'
+echo "/n"
+echo "Importing all saved objects (indexes, visualizations, dashboards)"
+curl -X POST localhost:5601/api/saved_objects/_import?overwrite=true -H 'kbn-xsrf: true' --form 'file=@import/panos-objects.ndjson' -H 'kbn-xsrf: true'
+echo "/n"
+echo "Starting logstash"
 systemctl start logstash
-exit (0)
-
-
+echo "*****"
+echo "paloalto_elk installed on local ELK instance"
 
