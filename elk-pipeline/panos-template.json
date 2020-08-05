@@ -1,5 +1,5 @@
 {
-  "template" : "panos-template",
+   "template" : "panos-template",
     "order" : 0,
     "version" : 1,
     "index_patterns" : [
@@ -420,6 +420,9 @@
             }
           }
         },
+        "mac_address" : {
+          "type" : "text"
+        },
         "dest_name" : {
           "type" : "text",
           "fields" : {
@@ -500,14 +503,13 @@
           }
         },
         "message" : {
-          "eager_global_ordinals": false,
-          "index_phrases": false,
-          "fielddata": false,
-          "norms": false,
-          "index": false,
-          "store": false,
-          "type": "text",
-          "fields": {}
+          "eager_global_ordinals" : false,
+          "index_phrases" : false,
+          "fielddata" : false,
+          "norms" : false,
+          "index" : false,
+          "store" : false,
+          "type" : "text"
         },
         "generated_time" : {
           "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis",
@@ -530,6 +532,9 @@
               "type" : "keyword"
             }
           }
+        },
+        "lease_ip" : {
+          "type" : "ip"
         },
         "@timestamp" : {
           "type" : "date"
